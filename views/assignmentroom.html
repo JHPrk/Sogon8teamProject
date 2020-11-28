@@ -6,7 +6,7 @@
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href="css_assignment.css" type="text/css" rel="stylesheet">
+<link href="/../css_assignment.css" type="text/css" rel="stylesheet">
 
 <style>
 table{
@@ -64,10 +64,10 @@ width:45%;
 	<!-- 페이지 연결 수정; 이름 임의로 지정 -->
 	<div class="menu" style="margin-top:80px; margin-left:125px;">
 		<select name="list2" style=" font-size:25px; width:150px;">
-			<option value="assignmentroom.html" selected>과제 목록</option>
-			<option value="grade_report.html">성적 확인</option>
-			<option value="http://www.naver.com">질의 응답</option>
-			<option value="chatting_room.html">채팅 하기</option>
+			<option value="" selected>과제 목록</option>
+			<option value="">성적 확인</option>
+			<option value="">질의 응답</option>
+			<option value="">채팅 하기</option>
 		</select>		
 	</div>	
 	
@@ -77,12 +77,12 @@ width:45%;
 	<!-- 출석, 시험 부분 연결하기 -->
 	<section class="section">
 	<div style="width:975px; height:500px; background:white;">
-		<input type="button" onClick="location.href=''" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
-		<input type="button" onClick="location.href='assignmentroom.html'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
-		<input type="button" onClick="location.href=''" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		<input type="button" onClick="location.href='./grade/attendance'" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='./assignment'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href='./grade/test'" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
 		
 		<!-- 관리자에서만 보이는 등록 버튼 -->
-		<input type="button" onClick="location.href='assignment_enroll.html'" value="등록" style="float:right; border:0px; font-size:20px; border-radius: 0.5em; margin-right:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		<input type="button" onClick="location.href='./assignment/enroll'" value="등록" style="float:right; border:0px; font-size:20px; border-radius: 0.5em; margin-right:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
 	<div style="font-size:20px;">
 		<table>
 			<tr>
