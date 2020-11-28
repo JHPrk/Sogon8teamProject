@@ -15,7 +15,7 @@
 	<!-- 메인 페이지 상단 부분 -->
 	<header class="header" style="margin-top:15px;">
 		<div style="background-color:#afd5ef; height:90px;">
-			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+			<img src="studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
 			</div>
@@ -33,7 +33,7 @@
 	</div>
 	
 	<div class="menu" style="margin-top:50px; margin-left:125px; ">
-		<select name="list1" style="font-size:25px; width:150px;">
+		<select id="list1" style="font-size:25px; width:150px;">
 			<option value="class1" selected>수업 이름</option>
 			<option value="class2">수업 이름2</option>
 			<option value="class3">수업 이름3</option>
@@ -43,11 +43,11 @@
 	
 	
 	<div class="menu" style="margin-top:80px; margin-left:125px;">
-		<select name="list2" style=" font-size:25px; width:150px;">
-			<option value="assignment" selected>과제 목록</option>
-			<option value="grade">성적 확인</option>
-			<option value="qna">질의 응답</option>
-			<option value="chat">채팅 하기</option>
+		<select id="list2" style=" font-size:25px; width:150px;">
+			<option value="" selected>과제 목록</option>
+			<option value="">성적 확인</option>
+			<option value="">질의 응답</option>
+			<option value="">채팅 하기</option>
 		</select>		
 	</div>	
 	
@@ -57,9 +57,10 @@
 	<section class="section">
 	<div style="width:975px; height: 580px; background:white;">
 		<!-- 출석, 시험 부분 연결하기 -->
-		<input type="button" onClick="location.href=''" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
-		<input type="button" onClick="location.href='assignmentroom.html'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
-		<input type="button" onClick="location.href=''" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		<input type="button" onClick="location.href='./grade/attendance'" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='./assignment'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href='./grade/test'" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+	
 	<div>
 		<!-- 과제 상세 보기 -->
 		<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:925px; height:40px; background-color:#e0e0e0;">과제 상세 보기</div>
@@ -128,8 +129,8 @@
 	<!-- 취소, 등록 버튼  -->
 	<div>
 		<div style="float:left;">
-			<input type="button" onClick="location.href='assignmentroom.html'" value="취소" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:400px; margin-top:25px; width:100px; height:40px; background-color:#e0e0e0;">
-			<input type="button" onClick="location.href='assignment_upload.html'" value="제출" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:25px; width:100px; height:40px; background-color:#7bc0f1;">		
+			<input type="button" onClick="location.href='./assignment'" value="취소" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:400px; margin-top:25px; width:100px; height:40px; background-color:#e0e0e0;">
+			<input type="button" onClick="location.href='./assignment/upload'" value="제출" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:25px; width:100px; height:40px; background-color:#7bc0f1;">		
 		</div>
 				
 	</div>
