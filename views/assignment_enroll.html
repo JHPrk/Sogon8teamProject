@@ -265,7 +265,7 @@
 	<!-- 메인 페이지 상단 부분 -->
 	<header class="header" style="margin-top:15px;">
 		<div style="background-color:#afd5ef; height:90px;">
-			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+			<img src="studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
 			</div>
@@ -294,10 +294,10 @@
 	
 	<div class="menu" style="margin-top:80px; margin-left:125px;">
 		<select name="list2" style=" font-size:25px; width:150px;">
-			<option value="assignment" selected>과제 목록</option>
-			<option value="grade">성적 확인</option>
-			<option value="qna">질의 응답</option>
-			<option value="chat">채팅 하기</option>
+			<option value="" selected>과제 목록</option>
+			<option value="">성적 확인</option>
+			<option value="">질의 응답</option>
+			<option value="">채팅 하기</option>
 		</select>		
 	</div>	
 	
@@ -307,9 +307,11 @@
 	<section class="section">
 	<div style="width:975px; height: 580px; background:white;">
 		<!-- 출석, 시험 부분 연결하기 -->
-		<input type="button" onClick="location.href=''" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
-		<input type="button" onClick="location.href='assignmentroom.html'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
-		<input type="button" onClick="location.href=''" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		<input type="button" onClick="location.href='./grade/attendance'" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='./assignment'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href='./grade/test'" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+	
+    <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post" action="./assignment_room">
 	<div>
 		<!-- 신규 과제 등록 -->
 		<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:925px; height:40px; background-color:#e0e0e0;">신규 과제 등록</div>
@@ -318,7 +320,7 @@
 		<div style="float:left; margin-top:10px;">
 			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">과제 제목</div>
 		</div>
-		<input type="text" placeholder="과제 제목을 입력해주세요." style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:50px; background-color:white;">
+		<input type="text" placeholder="과제 제목을 입력해주세요." name="assignment_title" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:50px; background-color:white;">
 
 	<!-- 과제 제출 일자 -->
 	<div style="float:left;">
@@ -328,7 +330,7 @@
 			<div style="text-align:center; line-height:185%; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; height:40px; background-color:white;">시작일</div>
 		</div>
 		<div style="float:left;">
-			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+			<input type="date" id="currentDate" name="assignment_startDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
 		</div>
 		
 		
@@ -336,7 +338,7 @@
 			<div style="text-align:center; line-height:185%; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; height:40px; background-color:white;">종료일</div>
 		</div>
 		<div style="float:left;">
-			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+			<input type="date" id="currentDate" name="assignment_endDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
 		</div>
 		
 	</div>
@@ -346,7 +348,7 @@
 			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">성적 공개</div>
 		</div>
 		<div style="float:left">
-			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+			<input type="date" id="currentDate" name="assignment_showDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
 		</div>
 	</div>
 	
@@ -356,7 +358,7 @@
 			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">과제 설명</div>
 		</div>
 		<div style="float:left;">
-			<input type="text" placeholder="과제 설명을 입력해주세요." style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:80px; background-color:white;">
+			<input type="text" placeholder="과제 설명을 입력해주세요." name="assignment_detail" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:80px; background-color:white;">
 		</div>	
 	</div>	
 	
@@ -366,14 +368,13 @@
 		
 		<!-- 파일 업로드 -->
 		<div class="upload-btn-wrapper" style="float:left;">
-            <input type="file" id="input_file" multiple="multiple" style="height: 100%;" />
+            <input type="file" id="input_file" name="assignment_attach" multiple="multiple" style="height: 100%;" />
             <button class="upload-btn">파일선택</button>
         </div>
 	</div>
 	
 	
     	<div style="float:left;">
-        <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
     
 		<div id="dropZone" style="margin-left:20px; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-top:15px; width:785px; height:100px; background-color:white;">
 			<div id="fileDragDesc">파일 선택을 누르거나 파일을 드래그 해주세요. </div>                           
@@ -382,7 +383,6 @@
 			</table>
 		</div>
     
-        </form>
 		</div>
 	
 		
@@ -391,17 +391,17 @@
 	<!-- 취소, 등록 버튼  -->
 	<div>
 		<div style="float:left;">
-			<input type="button" onClick="location.href='assignmentroom.html'" value="취소" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:400px; margin-top:25px; width:100px; height:40px; background-color:#e0e0e0;">
+			<input type="button" onClick="location.href='./assignment'" value="취소" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:400px; margin-top:25px; width:100px; height:40px; background-color:#e0e0e0;">
 		</div>
 		
 		<!-- 등록버튼 연결해야 함 -->
 		<div style="float:left;">
-			<form method="post" action="" enctype="multipart/form-data">
-				<input type="button" onclick="uploadFile(); return false;" value="등록" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:25px; width:100px; height:40px; background-color:#7bc0f1;">		
-			</form>
+				<input type="button" name="assignment_enroll" onclick="uploadFile(); return false;" value="등록" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:25px; width:100px; height:40px; background-color:#7bc0f1;">		
 		</div>
 		
 	</div>
+	
+	</form>
 	
 	</div>
 	</section>
