@@ -1,0 +1,421 @@
+<!-- 관리자가 과제를 등록하는 페이지 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>STUDY WORK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="/../css_assignment_admin.css" type="text/css" rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+    
+<script>
+	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#input_file").bind('change', function() {
+			selectFile(this.files);
+			//this.files[0].size gets the size of your file.
+			//alert(this.files[0].size);
+		});
+	});
+
+	var fileIndex = 0;// 파일 리스트 번호
+	var totalFileSize = 0;// 등록할 전체 파일 사이즈
+	var fileList = new Array();// 파일 리스트
+	var fileSizeList = new Array();// 파일 사이즈 리스트
+	var uploadSize = 50;// 등록 가능한 파일 사이즈 MB-임의로 지정
+	var maxUploadSize = 50;// 등록 가능한 총 파일 사이즈 MB-임의로 지정
+    
+	$(function() {
+	// 파일 드롭 다운
+	fileDropDown();
+	});
+    
+	// 파일 드롭 다운
+	function fileDropDown() {
+		var dropZone = $("#dropZone");
+		//Drag기능 
+		dropZone.on('dragenter', function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			// 드롭다운 영역 css
+			dropZone.css('background-color', '#E3F2FC');
+			});
+			dropZone.on('dragleave', function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				// 드롭다운 영역 css
+				dropZone.css('background-color', '#FFFFFF');
+			});
+			dropZone.on('dragover', function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				// 드롭다운 영역 css
+				dropZone.css('background-color', '#E3F2FC');
+			});
+			dropZone.on('drop', function(e) {
+				e.preventDefault();
+				// 드롭다운 영역 css
+				dropZone.css('background-color', '#FFFFFF');
+    
+				var files = e.originalEvent.dataTransfer.files;
+					if (files != null) {
+                        if (files.length < 1) {
+                            console.log("폴더 업로드 불가");
+                            return;
+                        } else {
+                            selectFile(files)
+                        }
+                    } else {
+                        alert("ERROR");
+                    }
+			});
+	}
+    
+	// 파일 선택시
+	function selectFile(fileObject) {
+		var files = null;
+    
+		if (fileObject != null) {
+			// 파일 Drag 이용하여 등록시
+			files = fileObject;
+		} else {
+			// 직접 파일 등록시
+			files = $('#multipaartFileList_' + fileIndex)[0].files;
+		}
+    
+		// 다중파일 등록
+		if (files != null) {
+                    
+			if (files != null && files.length > 0) {
+				$("#fileDragDesc").hide(); 
+				$("fileListTable").show();
+			} else {
+				$("#fileDragDesc").show(); 
+				$("fileListTable").hide();
+			}
+                    
+			for (var i = 0; i < files.length; i++) {
+				// 파일 이름
+				var fileName = files[i].name;
+				var fileNameArr = fileName.split("\.");
+				// 확장자
+				var ext = fileNameArr[fileNameArr.length - 1];
+                        
+				var fileSize = files[i].size; // 파일 사이즈(단위 :byte)
+				console.log("fileSize="+fileSize);
+				if (fileSize <= 0) {
+					console.log("0kb file return");
+					return;
+				}
+	                        
+				var fileSizeKb = fileSize / 1024; // 파일 사이즈(단위 :kb)
+				var fileSizeMb = fileSizeKb / 1024;    // 파일 사이즈(단위 :Mb)
+                        
+				var fileSizeStr = "";
+				if ((1024*1024) <= fileSize) {    // 파일 용량이 1메가 이상인 경우 
+					console.log("fileSizeMb="+fileSizeMb.toFixed(2));
+					fileSizeStr = fileSizeMb.toFixed(2) + " Mb";
+				} else if ((1024) <= fileSize) {
+					console.log("fileSizeKb="+parseInt(fileSizeKb));
+					fileSizeStr = parseInt(fileSizeKb) + " kb";
+				} else {
+					console.log("fileSize="+parseInt(fileSize));
+					fileSizeStr = parseInt(fileSize) + " byte";
+				}
+    
+				/* if ($.inArray(ext, [ 'exe', 'bat', 'sh', 'java', 'jsp', 'html', 'js', 'css', 'xml' ]) >= 0) {
+				// 확장자 체크
+				alert("등록 불가 확장자");
+				break; */
+				if ($.inArray(ext, [ 'hwp', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'png', 'pdf', 'jpg', 'jpeg', 'gif', 'zip' ]) <= 0) {// 확장자 체크
+					alert("등록이 불가능한 파일 형식입니다.("+fileName+")");
+				} else if (fileSizeMb > uploadSize) {// 파일 사이즈 체크
+					alert("용량 초과\n업로드 가능 용량 : " + uploadSize + " MB");
+					break;
+				} else {					
+					totalFileSize += fileSizeMb;// 전체 파일 사이즈
+					fileList[fileIndex] = files[i];// 파일 배열에 넣기
+                    fileSizeList[fileIndex] = fileSizeMb;// 파일 사이즈 배열에 넣기
+                    addFileList(fileIndex, fileName, fileSizeStr);// 업로드 파일 목록 생성
+                    fileIndex++;// 파일 번호 증가
+                 }
+			}
+		} else {
+			alert("ERROR");
+		}
+	}
+    
+	// 업로드 파일 목록 생성
+	function addFileList(fIndex, fileName, fileSizeStr) {
+    
+	var html = "";
+	html += "<tr id='fileTr_" + fIndex + "'>";
+	html += "    <td id='dropZone' class='left' >";
+	html += fileName + " (" + fileSizeStr +") " 
+			+ "<input value='삭제' type='button' href='#' onclick='deleteFile(" + fIndex + "); return false;'>"	//파일명, 크기 옆에 삭제 버튼
+	html += "    </td>"
+	html += "</tr>"
+    
+	$('#fileTableTbody').append(html);
+	}
+    
+	// 업로드 파일 삭제
+	function deleteFile(fIndex) {
+		console.log("deleteFile.fIndex=" + fIndex);
+		// 전체 파일 사이즈 수정
+		totalFileSize -= fileSizeList[fIndex];
+    	
+		// 파일 배열에서 삭제
+		delete fileList[fIndex];
+    
+		// 파일 사이즈 배열 삭제
+		delete fileSizeList[fIndex];
+    
+		// 업로드 파일 테이블 목록에서 삭제
+		$("#fileTr_" + fIndex).remove();
+                
+		console.log("totalFileSize="+totalFileSize);
+                
+		if (totalFileSize > 0) {
+			$("#fileDragDesc").hide(); 
+			$("fileListTable").show();
+		} else {
+			$("#fileDragDesc").show(); 
+			$("fileListTable").hide();
+		}
+	}
+    
+	// 파일 등록
+	function uploadFile() {
+	// 등록할 파일 리스트
+	var uploadFileList = Object.keys(fileList);
+        
+	// 용량을 500MB를 넘을 경우 업로드 불가
+	if (totalFileSize > maxUploadSize) {
+		// 파일 사이즈 초과 경고창
+		alert("총 용량 초과\n총 업로드 가능 용량 : " + maxUploadSize + " MB");
+		return;
+	}
+    
+	if (confirm("과제를 등록 하시겠습니까?")) {
+		// 등록할 파일 리스트를 formData로 데이터 입력
+		var form = $('#uploadForm');
+		var formData = new FormData(form);
+		for (var i = 0; i < uploadFileList.length; i++) {
+		formData.append('files', fileList[uploadFileList[i]]);
+	}
+    
+	$.ajax({
+		url : "업로드 경로",
+		data : formData,
+		type : 'POST',
+		enctype : 'multipart/form-data',
+		processData : false,
+		contentType : false,
+		dataType : 'json',
+		cache : false,
+		success : function(result) {
+			if (result.data.length > 0) {
+				alert("성공");
+				location.reload();
+			} else {
+				alert("실패");
+				location.reload();
+			}
+		}
+	});
+	}
+	}
+</script>
+
+<style>
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+}
+        
+.upload-btn {
+	display: inline-block;
+	margin-left:25px; margin-top:15px;
+	width:115px; height:40px;
+	font-size: 20px;
+	line-height: 185%;
+	text-align:center;
+	background-color:  #f0f0f0;
+	cursor: pointer;
+	border: 1px solid;
+}
+        
+.upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+</style>
+
+</head>
+<body>
+	<!-- 메인 페이지 상단 부분 -->
+	<header class="header" style="margin-top:15px;">
+		<div style="background-color:#afd5ef; height:90px;">
+			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+			<div style="font-size:50px; line-height:185%;">
+				<b>STUDY WORK</b>
+			</div>
+		</div>
+	</header>
+
+	<!-- 왼쪽 부분  -->
+	<nav class="nav">
+	<!-- 내 정보 -->
+	<div style="margin-top:50px; margin-left:125px; font-size:25px;">
+		<img>
+		<p>ㅇㅇㅇ교수님 <input type="submit" value="로그아웃" style="font-size:20px; margin-left:15px;">
+		</p>
+		
+	</div>
+	
+	<div class="menu" style="margin-top:50px; margin-left:125px; ">
+		<select name="list1" style="font-size:25px; width:150px;">
+			<option value="class1" selected>수업 이름</option>
+			<option value="class2">수업 이름2</option>
+			<option value="class3">수업 이름3</option>
+			<option value="class4">수업 이름4</option>
+		</select>		
+	</div>	
+	
+	
+	<div class="menu" style="margin-top:80px; margin-left:125px;">
+		<select name="list2" style=" font-size:25px; width:150px;">
+			<option value="assignment" selected>과제 목록</option>
+			<option value="grade">성적 확인</option>
+			<option value="qna">질의 응답</option>
+			<option value="chat">채팅 하기</option>
+		</select>		
+	</div>	
+	
+	</nav>
+	
+	<!-- 오른쪽 부분 -->
+	<section class="section">
+	<div style="width:975px; height: 580px; background:white;">
+		<!-- 출석, 시험 부분 연결하기 -->
+		<input type="button" onClick="location.href=''" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='assignmentroom.html'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href=''" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+	<div>
+		<!-- 신규 과제 등록 -->
+		<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:925px; height:40px; background-color:#e0e0e0;">신규 과제 등록</div>
+		
+		<!-- 과제 제목 -->
+		<div style="float:left; margin-top:10px;">
+			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">과제 제목</div>
+		</div>
+		<input type="text" placeholder="과제 제목을 입력해주세요." style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:50px; background-color:white;">
+
+	<!-- 과제 제출 일자 -->
+	<div style="float:left;">
+		<div style="float:left; text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">제출 일자</div>
+		
+		<div style="float:left;">
+			<div style="text-align:center; line-height:185%; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; height:40px; background-color:white;">시작일</div>
+		</div>
+		<div style="float:left;">
+			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+		</div>
+		
+		
+		<div style="float:left;">
+			<div style="text-align:center; line-height:185%; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; height:40px; background-color:white;">종료일</div>
+		</div>
+		<div style="float:left;">
+			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+		</div>
+		
+	</div>
+	<!-- 성적 공개 날짜 -->
+	<div style="float:left;">
+		<div style="float:left;">
+			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">성적 공개</div>
+		</div>
+		<div style="float:left">
+			<input type="date" id="currentDate" style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:240px; height:40px; background-color:white;">	
+		</div>
+	</div>
+	
+	<!-- 과제 설명 -->
+	<div style="float:left;">
+		<div style="float:left;">		
+			<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">과제 설명</div>
+		</div>
+		<div style="float:left;">
+			<input type="text" placeholder="과제 설명을 입력해주세요." style="border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:785px; height:80px; background-color:white;">
+		</div>	
+	</div>	
+	
+	<!-- 파일 업로드&추가 -->
+	<div style="float:left;">
+		<div style="text-align:center; line-height:185%; border:0px; font-size:20px; border-radius: 0.5em; margin-left:25px; margin-top:15px; width:115px; height:40px; background-color:#e0e0e0;">첨부 파일</div>
+		
+		<!-- 파일 업로드 -->
+		<div class="upload-btn-wrapper" style="float:left;">
+            <input type="file" id="input_file" multiple="multiple" style="height: 100%;" />
+            <button class="upload-btn">파일선택</button>
+        </div>
+	</div>
+	
+	
+    	<div style="float:left;">
+        <form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post">
+    
+		<div id="dropZone" style="margin-left:20px; border:1px solid #e0e0e0; font-size:20px; border-radius: 0.5em; margin-top:15px; width:785px; height:100px; background-color:white;">
+			<div id="fileDragDesc">파일 선택을 누르거나 파일을 드래그 해주세요. </div>                           
+			<table id="fileListTable">
+				<tbody id="fileTableTbody"></tbody>
+			</table>
+		</div>
+    
+        </form>
+		</div>
+	
+		
+	</div>		
+	
+	<!-- 취소, 등록 버튼  -->
+	<div>
+		<div style="float:left;">
+			<input type="button" onClick="location.href='assignmentroom.html'" value="취소" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:400px; margin-top:25px; width:100px; height:40px; background-color:#e0e0e0;">
+		</div>
+		
+		<!-- 등록버튼 연결해야 함 -->
+		<div style="float:left;">
+			<form method="post" action="" enctype="multipart/form-data">
+				<input type="button" onclick="uploadFile(); return false;" value="등록" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:25px; width:100px; height:40px; background-color:#7bc0f1;">		
+			</form>
+		</div>
+		
+	</div>
+	
+	</div>
+	</section>
+
+	<!-- 메인 페이지 하단 부분 -->
+	<footer class="footer">
+		<div style="color:#333333; font-size:10px; padding-left:15px;">
+		<br>
+		서울캠퍼스 04620 서울특별시 중구 필동로 1길 30 동국대학교<br>
+		바이오메디캠퍼스 10326 경기도 고양시 일산동구 동국로32 동국대학교 바이오메디캠퍼스 <br>
+		TEL 02-2260-3114 FAX 02-2277-1274<br>
+		Copyright(c) 2016 DONGGUK UNIVERSITY. ALL RIGHTS RESERVED.<br>
+		</div>
+	</footer>
+
+</body>
+</html>

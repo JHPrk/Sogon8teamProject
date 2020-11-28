@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>STUDY WORK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/../css_test.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<!-- 상단 자리 -->
+		<header class="header" style="background-color:#afd5ef; height:90px;">
+			<div class="content" onclick="location.href='/'">
+				<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+				<div style="font-size:50px; line-height:185%;">
+					<b>STUDY WORK</b>
+				</div>
+			</div>
+		</header>
+		<!-- 왼쪽 자리 -->
+		<div class="nav">
+			<!-- 로그인 정보 표시 -->
+			<div style="font-size:25px; margin-top:30px;">
+				ooo님 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" value="로그아웃" class="logbt">
+			</div>
+			<select id="subject">
+				<option value="강의실선택">강의실 선택</option>
+				<option value="소프트웨어공학개론">소프트웨어공학개론</option>
+				<option value="데이터베이스시스템">데이터베이스시스템</option>
+				<option value="인공지능">인공지능</option>
+			</select>
+			<div></div>
+			<select id="select_move">
+				<option value="성적확인">성적확인</option>
+				<option value="질의응답">질의응답</option>
+				<option value="과제목록">과제목록</option>
+				<option value="채팅하기">채팅하기</option>
+			</select>
+		</div>
+		
+		<!-- 버튼  -->
+		<section class="section">
+			<a href="/attendance_list" class="butt att">출석</a>
+			<a href="/hw_list" class="butt hw">과제</a>
+			<a href="/test_list" class="butt test">시험</a>
+
+			<table class="table">
+				<thead>
+				  <tr>
+					<th>시험 종류</th> <th>시험 기간</th>
+					<th>시험 여부</th> <th>평가 점수</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td>중간고사</td> <td>2020-10-21 1000~2020-10-21 1200</td> 
+					<td>출석</td> <td>100.0</td>
+				  </tr>
+				</tbody>
+			  </table>
+		</section>
+		
+		
+		<!-- 하단 자리 -->
+		<footer class="footer">
+			<div class="copyright">
+				서울캠퍼스 04620 서울특별시 중구 필동로 1길 30 동국대학교<br>
+				바이오메디캠퍼스 10326 경기도 고양시 일산동구 동국로32 동국대학교 바이오메디캠퍼스<br>
+				TEL 02-2260-3114 FAX 02-2277-1274<br>
+				Copyright(c) 2016 DONGGUK UNIVERSITY. ALL RIGHTS RESERVED.
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

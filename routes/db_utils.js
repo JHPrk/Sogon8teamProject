@@ -5,12 +5,76 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
   connectionLimit: 3,
   host: "localhost",
-  user: "jeffrey",
-  password: "mypass",
+  user: "root",
+  password: "0000",
   port : 3306,
-  database: "gamgi"
+  database: "mydb"
 });
 
+exports.find_user = function(userId,callback){
+
+  pool.getConnection(function (err, con) {
+    // Use the connection
+    if (err){
+      return callback(err);
+    }
+    con.query('SELECT ID, password, name, sex, major FROM user where ID = ?', 
+      [userId],
+      function (err, rows) {
+        con.release(); // Don't use the connection here, it has been returned to the pool.
+        if (err) {
+          console.error("err : " + err);
+          return callback(err);
+        }
+        else if(rows.length <=0)
+        {
+          return callback(null,0);
+        }
+        console.log("rows : " + JSON.stringify(rows));
+        // console.log("room start>>>> " + rows);
+        //console.log(rows);
+        //rowObjs = JSON.stringify(rows);
+        rowObj = rows[0];
+        console.log(rowObj);
+        //console.log("vId: " + rowObj.videoId)
+        //console.log("vTs: " + rowObj.videoTimestamp)
+        console.log("room end>>>> ");
+
+        return callback(null, rowObj);
+    });
+
+  }); 
+}
+
+exports.login_user = function(userId, password, callback){
+  pool.getConnection(function (err, con) {
+    // Use the connection
+    con.query('SELECT ID FROM user where ID = ? and password = ?', 
+      [userId, password],
+      function (err, rows) {
+        con.release(); // Don't use the connection here, it has been returned to the pool.
+        if (err) {
+          console.error("err : " + err);
+          return callback(err);
+        }
+        else if(rows.length <=0)
+        {
+          return callback(null,0);
+        }
+        console.log("rows : " + JSON.stringify(rows));
+        // console.log("room start>>>> " + rows);
+        //console.log(rows);
+        //rowObjs = JSON.stringify(rows);
+        rowObj = rows[0];
+        console.log(rowObj);
+        //console.log("vId: " + rowObj.videoId)
+        //console.log("vTs: " + rowObj.videoTimestamp)
+
+        return callback(null, 1);
+    });
+
+  }); 
+}
 exports.insert_user = function(userName,callback) {
   var userId;
 

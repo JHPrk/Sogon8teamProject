@@ -1,0 +1,118 @@
+<!-- 과제 페이지 처음 들어가면 나오는 과제 목록 화면 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>STUDY WORK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="css_assignment.css" type="text/css" rel="stylesheet">
+
+<style>
+table{
+width:950px;
+border:1px solid #e0e0e0;
+margin-top:15px;
+margin-left:15px;
+border-collapse:collapse;
+}
+th{
+border:1px solid #e0e0e0;
+background-color:#e0e0e0;
+}
+td{
+border:1px solid #e0e0e0;
+text-align:center;
+}
+.table_date{
+width:45%;
+}
+</style>
+</head>
+<body>
+	<!-- 메인 페이지 상단 부분 -->
+	<header class="header" style="margin-top:15px;">
+		<div style="background-color:#afd5ef; height:90px;">
+			<img src="studywork.png" style="height:100px; width:100px; float:left;">
+			<div style="font-size:50px; line-height:185%;">
+				<b>STUDY WORK</b>
+			</div>
+		</div>
+	</header>
+
+	<!-- 왼쪽 부분  -->
+	<nav class="nav">
+	<!-- 내 정보 -->
+	<div style="margin-top:50px; margin-left:125px; font-size:25px;">
+		<img>
+		<p>ㅇㅇㅇ님 <input type="submit" value="로그아웃" style="font-size:20px; margin-left:15px;">
+		</p>
+		
+	</div>
+	
+	<!-- db에서 수업 목록 받아와서 수정해야 함 -->
+	<div class="menu" style="margin-top:50px; margin-left:125px; ">
+		<select name="list1" style="font-size:25px; width:150px;">
+			<option value="class1" selected>수업 이름</option>
+			<option value="class2">수업 이름2</option>
+			<option value="class3">수업 이름3</option>
+			<option value="class4">수업 이름4</option>
+		</select>		
+	</div>	
+	
+	
+	<!-- 페이지 연결 수정; 이름 임의로 지정 -->
+	<div class="menu" style="margin-top:80px; margin-left:125px;">
+		<select name="list2" style=" font-size:25px; width:150px;">
+			<option value="assignmentroom.html" selected>과제 목록</option>
+			<option value="grade_report.html">성적 확인</option>
+			<option value="http://www.naver.com">질의 응답</option>
+			<option value="chatting_room.html">채팅 하기</option>
+		</select>		
+	</div>	
+	
+	</nav>
+	
+	<!-- 오른쪽 부분 -->
+	<!-- 출석, 시험 부분 연결하기 -->
+	<section class="section">
+	<div style="width:975px; height:500px; background:white;">
+		<input type="button" onClick="location.href=''" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='assignmentroom.html'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href=''" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		
+		<!-- 관리자에서만 보이는 등록 버튼 -->
+		<input type="button" onClick="location.href='assignment_enroll.html'" value="등록" style="float:right; border:0px; font-size:20px; border-radius: 0.5em; margin-right:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+	<div style="font-size:20px;">
+		<table>
+			<tr>
+				<th>과제 제목</th>
+				<th class="table_date">제출 기간</th>
+				<th>제출 여부</th>
+				<th>평가 점수</th>
+			</tr>
+			<tr>
+				<td>db연결</td>
+				<td>db연결</td>
+				<td>db연결</td>
+				<td>db연결</td>
+			</tr>
+		</table>
+	</div>
+	
+	</div>
+	</section>
+
+	<!-- 메인 페이지 하단 부분 -->
+	<footer class="footer">
+		<div style="color:#333333; font-size:10px; padding-left:15px;">
+		<br>
+		서울캠퍼스 04620 서울특별시 중구 필동로 1길 30 동국대학교<br>
+		바이오메디캠퍼스 10326 경기도 고양시 일산동구 동국로32 동국대학교 바이오메디캠퍼스 <br>
+		TEL 02-2260-3114 FAX 02-2277-1274<br>
+		Copyright(c) 2016 DONGGUK UNIVERSITY. ALL RIGHTS RESERVED.<br>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="css_index.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="jquery.e-calendar.css"/>
+<script type="text/javascript" src="index.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.e-calendar.js"></script>
 <style>
 
 </style>
@@ -25,16 +29,17 @@
 	<!-- 메인 페이지 왼쪽 부분 -->
 	<nav class="nav">
 		<div class="login-box well">
-		<form accept-charset="UTF-8" role="form" method="post" action="">
+		<form accept-charset="UTF-8" role="form" method="post" action="./login">
 		<div>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<input type="text" id="userid" value='' placeholder="학번" class="form-control" style="height:35px;" />
-				<input type="submit" value="로그인" style="font-size:16px; color:#ffffff; background-color:#9acdef; border:0px; width:90px; height:38px; margin-left:30px;">
+				<input type="text" name="userid" value='' placeholder="학번" class="form-control" style="height:35px;" />
+				
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input type="password" id="password" value='' placeholder="비밀번호" class="form-control" style="height:35px;"/>
+				<input type="password" name="passwd" value='' placeholder="비밀번호" class="form-control" style="height:35px;"/>
+				<input type="submit" value="로그인" style="font-size:16px; color:#ffffff; background-color:#9acdef; border:0px; width:90px; height:38px; margin-left:30px;">
 			</div>
 		</div>
 		</form>
@@ -48,7 +53,26 @@
 	
 	<!-- 메인 페이지 오른쪽 부분 -->
 	<section class="section">
-			<div style="background:#ffffff; border:1px solid; width:651px; height:284px; margin-top: 80px;">달력 자리</div>
+			<div style="background:#ffffff; border:0px solid; width:50%; height:20%; margin-top: 80px;">
+			    <div id="calendar">
+			    	<script type="text/javascript">
+			    		$(document).ready(function () {
+						    $('#calendar').eCalendar({
+
+						 weekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+						        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+						        textArrows: {previous: '<', next: '>'},
+						        eventTitle: 'Events',
+						        url: '',
+						        events: [
+						            {title: 'Event 1', description: 'Description 1', datetime: new Date(2016, 7, 15, 17)},
+						            {title: 'Event 2', description: 'Description 2', datetime: new Date(2016, 7, 14, 16)},
+						            {title: 'Event 3', description: 'jQueryScript.Net', datetime: new Date(2016, 7, 10, 16)}
+						        ]});
+						});
+			    	</script>
+			    </div>
+			</div>
 	</section>
 	
 	<!-- 메인 페이지 하단 부분 -->
