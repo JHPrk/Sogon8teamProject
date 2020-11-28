@@ -14,6 +14,8 @@
 
 </style>
 
+	<!-- 팝업 창 -->
+	<%- popupAlert %>
 </head>
 <body>
 	<!-- 메인 페이지 상단 부분 -->
@@ -29,25 +31,14 @@
 	<!-- 메인 페이지 왼쪽 부분 -->
 	<nav class="nav">
 		<div class="login-box well">
-		<form accept-charset="UTF-8" role="form" method="post" action="./login">
-		<div>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<input type="text" name="userid" value='' placeholder="학번" class="form-control" style="height:35px;" />
-				
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input type="password" name="passwd" value='' placeholder="비밀번호" class="form-control" style="height:35px;"/>
-				<input type="submit" value="로그인" style="font-size:16px; color:#ffffff; background-color:#9acdef; border:0px; width:90px; height:38px; margin-left:30px;">
-			</div>
-		</div>
-		</form>
+		<%- loginBox %>
 		</div>
 		<br><br>
 		<div style="margin-left:130px; margin-bottom:85px;">
 			<div style="background-color:#afd5ef; color:#ffffff; font-size:20px; width:334px; padding-left:10px;">강의실 목록</div><br>
-			<div style="background-color:#ffffff; width:334px; height:144px; border:1px solid light-gray; padding-top:10px; padding-left:10px;"><br> 로그인 후 강의실 목록이 보여집니다.</div>
+			<div style="background-color:#ffffff; width:334px; height:144px; border:1px solid light-gray; padding-top:10px; padding-left:10px;"><br> 
+			강의1
+			</div>
 		</div>	
 	</nav>
 	
