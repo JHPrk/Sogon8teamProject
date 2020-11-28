@@ -7,7 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="/../css_assignment_admin.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
     
 <script>
@@ -282,7 +287,7 @@
 		
 	</div>
 	
-	<div class="menu" style="margin-top:50px; margin-left:125px; ">
+	<div style="margin-top:50px; margin-left:125px; ">
 		<select name="list1" style="font-size:25px; width:150px;">
 			<option value="class1" selected>수업 이름</option>
 			<option value="class2">수업 이름2</option>
@@ -290,16 +295,18 @@
 			<option value="class4">수업 이름4</option>
 		</select>		
 	</div>	
+		
+	<div style=" margin-left:125px; margin-bottom:100px;"> 
+		<div class="dropdown" style=" font-size:25px; width:150px;"> 
+			<button class="btn-white btn dropdown-toggle" data-toggle="dropdown"> 과제 목록 </button> 
+                  <div class="dropdown-menu"> 
+					<a class="dropdown-item"  href="./grade">성적 확인</a> 
+					<a class="dropdown-item"  href="./qna">질의 응답</a> 
+					<a class="dropdown-item"  href="./chatting">채팅 하기</a> 
+                  </div> 
+         </div> 
+</div> 
 	
-	
-	<div class="menu" style="margin-top:80px; margin-left:125px;">
-		<select name="list2" style=" font-size:25px; width:150px;">
-			<option value="" selected>과제 목록</option>
-			<option value="">성적 확인</option>
-			<option value="">질의 응답</option>
-			<option value="">채팅 하기</option>
-		</select>		
-	</div>	
 	
 	</nav>
 	

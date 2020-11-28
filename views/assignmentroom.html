@@ -7,6 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="/../css_assignment.css" type="text/css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 
 <style>
 table{
@@ -62,14 +67,16 @@ width:45%;
 	
 	
 	<!-- 페이지 연결 수정; 이름 임의로 지정 -->
-	<div class="menu" style="margin-top:80px; margin-left:125px;">
-		<select name="list2" style=" font-size:25px; width:150px;">
-			<option value="" selected>과제 목록</option>
-			<option value="">성적 확인</option>
-			<option value="">질의 응답</option>
-			<option value="">채팅 하기</option>
-		</select>		
-	</div>	
+	<div style=" margin-left:125px; margin-bottom:100px;"> 
+		<div class="dropdown" style=" font-size:25px; width:150px;"> 
+			<button class="btn-white btn dropdown-toggle" data-toggle="dropdown"> 과제 목록 </button> 
+                  <div class="dropdown-menu"> 
+					<a class="dropdown-item"  href="./grade">성적 확인</a> 
+					<a class="dropdown-item"  href="./qna">질의 응답</a> 
+					<a class="dropdown-item"  href="./chatting">채팅 하기</a> 
+                  </div> 
+         </div> 
+</div> 
 	
 	</nav>
 	

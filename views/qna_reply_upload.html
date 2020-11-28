@@ -4,13 +4,13 @@
 
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="./답변등록_files/answer2.css" type="text/css" rel="stylesheet">
+<link href="css_a_upload.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<!-- 상단 자리 -->
 	<header class="header" style="margin-top:15px;">
 		<div style="background-color:#afd5ef; height:90px;">
-			<img src="./답변등록_files/studywork.png" style="height:100px; width:100px; float:left;">
+			<img src="studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
 			</div>
@@ -21,31 +21,32 @@
 	<nav class="nav">
 		<!-- 로그인 정보 표시 -->
 		<div style="font-size:25px; margin-top:30px; margin-left:50px;">
-			ooo 교수님 &nbsp;&nbsp;&nbsp;
+			ooo 교수님 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="submit" value="로그아웃" style="color:#ffffff; background-color:#9acdef; border:0px; font-size:20px;">
 		</div>
 		<!-- 메뉴 목록 -->
 		<div style="margin-top:70px; margin-left:50px; ">
-			<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">
-				<center>강의 목록</center>
 			</div>
+	<form action="classroom.html" method="post">
+        <input type="submit" value="강의 목록" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
+    </form>
 			<br>
-			<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">
-				<center>성적 등록</center>
-			</div>
+			<form action="grade_attendance.html" method="post">
+        <input type="submit" value="성적 등록" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
+    </form>
 			<br>
-			<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">
-				<center>과제 등록</center>
-			</div>
+			<form action="assignment_detail.html" method="post">
+        <input type="submit" value="과제 등록" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
+    </form>
 			<br>
-			<div style="color:#ffffff;background-color: #afd5ef;border:0px;font-size:30px;border-radius: 2em;width:80%;">
-				<center>질의 응답</center>
-			</div>
+			<form action="qna_quesiton_list.html" method="post">
+        <input type="submit" value="질의 응답" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
+    </form>
 			<br>
-			<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">
-				<center>채팅 하기</center>
-			</div>
-		</div>
+			<form action="chatting_list.html" method="post">
+        <input type="submit" value="채팅 하기" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
+    </form>
+
 	</nav>
 	
 	
@@ -64,7 +65,8 @@
     
     <input type="text" name="QTitle" value="" placeholder="내용을 입력해주세요" class="form-control" style="height: 312px;width: 813px;margin-left: 27px;">
     
-    <input type="button" value="등록하기" style="color: #333333;background-color: #ececec;border:0px;font-size:20px;border-radius: 1em;width: 21%;margin-top: 27px;margin-left: 638px;">
+    <form action="qna_question_list.html" method="post">
+        <input type="submit" value="등록하기" style="color: #333333;background-color: #ececec;border:0px;font-size:20px;border-radius: 1em;width: 21%;margin-top: 27px;margin-left: 638px;"></form>
     </aside>
 
 
