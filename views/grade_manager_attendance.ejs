@@ -1,0 +1,32 @@
+<form accept-charset="UTF-8" role="form" method="post" action="/grade/attendance/put">
+<select value="subject" id = "subject" name ="lectureno" class="lecture" onchange="update_attendance('/grade/attendance')">
+	<% lectures.forEach(function(val){ %>
+		<option value="<%=val[0]%>" <% if (val[0] == selected) { %> selected <% } %>><%=val[1]%></option>
+	<% }) %>
+</select>
+<input type="submit" class="butt send" value="등록" >
+<table class="table">
+	<thead>
+	<tr>
+		<th>학번</th>
+		<th>학과</th> <th>이름</th>
+		<th>학년</th> <th>출석</th>
+		<th>지각</th> <th>결석</th> <th>미처리</th>
+	</tr>
+	</thead>
+	<tbody>
+		<% attendances.forEach(function(val){ %>
+		<tr>
+    		<td><%=val[0]%></td> <td><%=val[1]%></td> <td><%=val[2]%></td>
+			<td><%=val[3]%></td> 
+			<td><input type="radio" name='<%=val[0]%>' value="출석" <% if (val[4] == 1) { %> checked <% } %>></td> 
+			<td><input type="radio" name='<%=val[0]%>' value="지각" <% if (val[4] == 2) { %> checked <% } %>></td> 
+			<td><input type="radio" name='<%=val[0]%>' value="결석" <% if (val[4] == 3) { %> checked <% } %>></td>
+			<td><input type="radio" name='<%=val[0]%>' value="미처리" <% if (val[4] == 0) { %> checked <% } %>></td>
+		</tr>
+		<% }) %>
+		<input type="hidden" name="academic" value = "<%=academic%>" >
+		<input type="hidden" name="name" value = "<%=title%>" >
+	</tbody>
+</table>
+</form>

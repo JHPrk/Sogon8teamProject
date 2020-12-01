@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/../css_test.css" type="text/css" rel="stylesheet">
+<link href="css_m_test.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<div class="wrapper">
 		<!-- 상단 자리 -->
 		<header class="header" style="background-color:#afd5ef; height:90px;">
 			<div class="content" onclick="location.href='/'">
-				<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+				<img src="/stylesheets/studywork.png" style="height:100px; width:100px; float:left;">
 				<div style="font-size:50px; line-height:185%;">
 					<b>STUDY WORK</b>
 				</div>
@@ -21,7 +21,7 @@
 		<div class="nav">
 			<!-- 로그인 정보 표시 -->
 			<div style="font-size:25px; margin-top:30px;">
-				ooo님 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				ooo교수님 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit" value="로그아웃" class="logbt">
 			</div>
 			<select id="subject">
@@ -41,24 +41,32 @@
 		
 		<!-- 버튼  -->
 		<section class="section">
-			<a href="/grade/attendance" class="butt att">출석</a>
-			<a href="/grade/homework" class="butt hw">과제</a>
-			<a href="/grade/test" class="butt test">시험</a>
-
-			<table class="table">
-				<thead>
-				  <tr>
-					<th>시험 종류</th> <th>시험 기간</th>
-					<th>시험 여부</th> <th>평가 점수</th>
-				  </tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<td>중간고사</td> <td>2020-10-21 1000~2020-10-21 1200</td> 
-					<td>출석</td> <td>100.0</td>
-				  </tr>
-				</tbody>
-			  </table>
+			<a href="/m_attendance_list" class="butt att">출석</a>
+			<a href="/m_hw_list" class="butt hw">과제</a>
+			<a href="/m_test_list" class="butt test">시험</a>
+			<form method="POST">
+				<select id="subject" class="lecture">
+					<option value="중간고사">중간고사</option>
+					<option value="기말고사">기말고사</option>
+				</select>
+				<input type="submit" class="butt send" value="등록">
+				<table class="table">
+					<thead>
+					<tr>
+						<th>번호</th> <th>학과</th>
+						<th>학번</th> <th>이름</th>
+						<th>학년</th> <th>시험 여부</th><th>평가 점수</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>1</td> <td>컴퓨터공학전공</td> <td>2018112013</td> <td>이서연</td>
+						<td>3</td> <td>출석</td> 
+						<td><input type="text" id="1_중간고사" placeholder="점수를 입력하세요" minlength="1" maxlength="3" size="5"></td> 
+					</tr>
+					</tbody>
+				</table>
+			  </form>
 		</section>
 		
 		

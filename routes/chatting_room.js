@@ -6,8 +6,8 @@ var fs = require('fs')
 var debug = require('./debugTool');
 
 /* GET chatting Room List. */
-router.get('/', function(req, res, next) {
-  	res.render('chatting_list',{data:['학생1','학생2']});
+router.post('/', function(req, res, next) {
+	res.render('chatting_list.ejs',{});
 });
 
 router.get('/room', function(req,res,next){

@@ -1,0 +1,18 @@
+<table class="table">
+<thead>
+  <tr>
+	<th>번호</th> <th>주차 및 차시</th>
+	<th>수업일자</th> <th>출석</th>
+	<th>지각</th> <th>결석</th>
+	<th>미처리</th> 
+  </tr>
+</thead>
+<tbody>
+	<% attendances.forEach(function(val){ %>
+  		<tr>
+		<td><%=val[0]%></td> <td><%=val[1]%></td> <td><%=val[2]%></td> 
+		<td><% if (val[3] == 1) { %>1 <% } else { %> 0 <% } %></td> <td><% if (val[3] == 2) { %>1 <% } else { %> 0 <% } %></td> <td><% if (val[3] == 3) { %>1 <% } else { %> 0 <% } %></td> <td><% if (val[3] == 0) { %>1 <% } else { %> 0 <% } %></td>
+  		</tr>
+	<% }) %>
+</tbody>
+</table>

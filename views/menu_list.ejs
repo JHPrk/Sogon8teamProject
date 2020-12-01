@@ -1,21 +1,22 @@
 <div style="margin-top:70px; margin-left:50px; ">
-	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='../'">
+	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='/'">
 		<center>강의 목록</center>
 	</div>
 	<br>
-	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='../grade'">
+	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick="javascript:page_move('/grade/attendance', '<%=academic%>', '<%=classname%>');">
 		<center>성적 확인</center>
 	</div>
 	<br>
-	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='../assignment'">
+	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick="javascript:page_move('/grade/homework', '<%=academic%>', '<%=classname%>');">
 		<center>과제 확인</center>
 	</div>
 	<br>
-	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='../qna'">
+	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick="javascript:page_move('/qna', '<%=academic%>', '<%=classname%>');">
 		<center>질의 응답</center>
 	</div>
 	<br>
-	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick = "location.href='../chatting'">
+	<div style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;" onClick="javascript:page_move('/chatting', '<%=academic%>', '<%=classname%>');">
 		<center>채팅 하기</center>
 	</div>
+	<br>
 </div>

@@ -6,7 +6,7 @@
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href="/../css_assignment.css" type="text/css" rel="stylesheet">
+<link href="/../css_homework.css" type="text/css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> 
@@ -267,53 +267,29 @@
 	<!-- 메인 페이지 상단 부분 -->
 	<header class="header" style="margin-top:15px;">
 		<div style="background-color:#afd5ef; height:90px;">
-			<img src="studywork.png" style="height:100px; width:100px; float:left;">
+			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
+				<b><%=title%></b>
 			</div>
 		</div>
 	</header>
 
 	<!-- 왼쪽 부분  -->
 	<nav class="nav">
-	<!-- 내 정보 -->
-	<div style="margin-top:50px; margin-left:125px; font-size:25px;">
-		<img>
-		<p>ㅇㅇㅇ님 <input type="submit" value="로그아웃" style="font-size:20px; margin-left:15px;">
-		</p>
-		
-	</div>
-	
-	<div class="menu" style="margin-top:50px; margin-left:125px; ">
-		<select id="list1" style="font-size:25px; width:150px;">
-			<option value="class1" selected>수업 이름</option>
-			<option value="class2">수업 이름2</option>
-			<option value="class3">수업 이름3</option>
-			<option value="class4">수업 이름4</option>
-		</select>		
-	</div>	
-	
-	
-	<div style=" margin-left:125px; margin-bottom:100px;"> 
-		<div class="dropdown" style=" font-size:25px; width:150px;"> 
-			<button class="btn-white btn dropdown-toggle" data-toggle="dropdown"> 과제 목록 </button> 
-                  <div class="dropdown-menu"> 
-					<a class="dropdown-item"  href="./grade">성적 확인</a> 
-					<a class="dropdown-item"  href="./qna">질의 응답</a> 
-					<a class="dropdown-item"  href="./chatting">채팅 하기</a> 
-                  </div> 
-         </div> 
-</div> 
-	
+		<!-- 로그인 정보 표시 -->
+		<%- loginBox %>
+		<!-- 메뉴 목록 -->
+		<%- menuList %>	
 	</nav>
 	
 	<!-- 오른쪽 부분 -->
 	<section class="section">
 	<div style="width:975px; height:500px; background:white;">
 		<!-- 출석, 시험 부분 연결하기 -->
-		<input type="button" onClick="location.href='./grade/attendance'" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
-		<input type="button" onClick="location.href='./assignment'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
-		<input type="button" onClick="location.href='./grade/test'" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
+		<input type="button" onClick="location.href='/grade/attendance'" value="출석" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">
+		<input type="button" onClick="location.href='/grade/homework'" value="과제" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#7bc0f1;">
+		<input type="button" onClick="location.href='/grade/test'" value="시험" style=" border:0px; font-size:20px; border-radius: 0.5em; margin-left:15px; margin-top:15px; width:100px; background-color:#afd5ef;">	
 	
 	<form name="uploadForm" id="uploadForm" enctype="multipart/form-data" method="post" action="./assignment_room">
 	<div>

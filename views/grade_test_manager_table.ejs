@@ -1,0 +1,27 @@
+<form accept-charset="UTF-8" role="form" method="post" action="/grade/test/put">
+<select value="subject" id = "tests" name ="testno" class="lecture" onchange="update_test('/grade/test')">
+		<option value="중간고사" <% if (selected == 1) { %> selected <% } %>>중간고사</option>
+		<option value="기말고사" <% if (selected == 2) { %> selected <% } %>>기말고사</option>
+</select>
+<input type="submit" class="butt send" value="등록" >
+<table class="table">
+	<thead>
+	<tr>
+		<th>학과</th>
+		<th>학번</th> <th>이름</th>
+		<th>학년</th> <th>시험 여부 </th> <th>평가 점수</th>
+	</tr>
+	</thead>
+	<tbody>
+		<% tests.forEach(function(val){ %>
+		<tr>
+    		<td><%=val[0]%></td> <td><%=val[1]%></td> <td><%=val[2]%></td>
+			<td><%=val[3]%></td> <td><%=val[4]%></td>  
+			<td><input type="text" id="1_hw" name="<%=val[1]%>" placeholder="<%=val[5]%>" minlength="1" maxlength="3" size="5" <% if (val[4] == '결석') { %> disabled <% } %>></td> 
+		</tr>
+		<% }) %>
+		<input type="hidden" name="academic" value = "<%=academic%>" >
+		<input type="hidden" name="name" value = "<%=title%>" >
+	</tbody>
+</table>
+</form>

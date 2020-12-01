@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/stylesheets/css_m_homework.css" type="text/css" rel="stylesheet">
+<link href="css_m_attendance.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<div class="wrapper">
@@ -45,11 +45,11 @@
 			<a href="/m_hw_list" class="butt hw">과제</a>
 			<a href="/m_test_list" class="butt test">시험</a>
 			<form method="POST">
-				<select id="subject" class="lecture">
-					<option value="hw1">HW#1</option>
-					<option value="hw2">HW#2</option>
-					<option value="hw3">HW#3</option>
-					<option value="hw4">HW#4</option>
+				<select value="subject" class="lecture" onchange="펑션명()">
+					<option value="1주차 1강">1주차 1강</option>
+					<option value="1주차 2강">1주차 2강</option>
+					<option value="2주차 1강">2주차 1강</option>
+					<option value="2주차 2강">2주차 2강</option>
 				</select>
 				<input type="submit" class="butt send" value="등록">
 				<table class="table">
@@ -57,14 +57,17 @@
 					<tr>
 						<th>번호</th> <th>학과</th>
 						<th>학번</th> <th>이름</th>
-						<th>학년</th> <th>제출 여부</th><th>평가 점수</th>
+						<th>학년</th> <th>출석</th>
+						<th>지각</th> <th>결석</th> <th>미처리</th>
 					</tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>1</td> <td>컴퓨터공학전공</td> <td>2018112013</td> <td>이서연</td>
-						<td>3</td> <td>제출 완료</td> 
-						<td><input type="text" id="1_hw" placeholder="점수를 입력하세요" minlength="1" maxlength="3" size="5"></td> 
+						<td>3</td> <td><input type="radio" name="1주차1강" value="출석"></td> 
+						<td><input type="radio" name="1주차1강" value="지각"></td> 
+						<td><input type="radio" name="1주차1강" value="결석"></td>
+						<td><input type="radio" name="1주차1강" value="미처리" checked></td>
 					</tr>
 					</tbody>
 				</table>

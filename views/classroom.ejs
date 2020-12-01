@@ -5,14 +5,39 @@
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css_classroom.css" type="text/css" rel="stylesheet">
+<script>
+    function page_move(url, academic_no, name) {
+        var form = document.createElement("form");
+        var parm = new Array();
+        var input = new Array();
+
+        form.action = url;
+        form.method = "post";
+
+        parm.push( ['academic', academic_no] );
+        parm.push( ['name', name] );
+
+
+        for (var i = 0; i < parm.length; i++) {
+            input[i] = document.createElement("input");
+            input[i].setAttribute("type", "hidden");
+            input[i].setAttribute('name', parm[i][0]);
+            input[i].setAttribute("value", parm[i][1]);
+            form.appendChild(input[i]);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 </head>
 <body>
 	<!-- 상단 자리 -->
 	<header class="header" style="margin-top:15px;">
-		<div style="background-color:#afd5ef; height:90px;">
+		<div class="content" onclick="location.href='/'" style="background-color:#afd5ef; height:90px;">
 			<img src="studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
+				<b><%=title%></b>
 			</div>
 		</div>
 	</header>
@@ -27,15 +52,63 @@
 	
 	<!-- 학습 목차  -->
 	<section class="section">
-		
+		<input type="button" value="강의 목록" style="color:#ffffff; background-color:#3498db; border:0px; font-size:20px; border-radius: 2em; width:30%; margin-top:10px; margin-left:10px;">
+		<div style="background-color:#ffffff; overflow:auto; margin-top:15px; margin-left:18px; width:400px; height:450px;">
+			<table class="table">
+				<thead>
+				  <tr>
+					<th>번호</th> <th>주차 및 차시</th>
+					<th>수업일자</th> 
+					<th>출결사항</th>
+				  </tr>
+				</thead>
+				<tbody>
+				<% lectures.forEach(function(val){ %>
+				  <tr>
+					<td><%= val[0] %></td> <td><%= val[1] %></td> <td><%= val[2] %></td> 
+					<td><%= val[3] %></td>
+				  </tr>
+				<% }) %>
+
+				</tbody>
+			  </table>
+		</div>
 	</section>
 	
 	<!-- 할일, 알림 -->
 	<aside class="aside">
 		<input type="button" value="할일" style="color:#ffffff; background-color:#3498db; border:0px; font-size:20px; border-radius: 2em; width:30%; margin-top:10px; margin-left:10px;">
-		<div style="background-color:#ffffff; width:400px; height:200px; margin-top:15px; margin-left:15px;"></div>
+		<div style="background-color:#ffffff; width:400px; height:200px; margin-top:15px; margin-left:15px;">
+			<table class="table">
+				<thead>
+				  <tr>
+					<th>종류</th> <th>제목</th>
+					<th>날짜</th> 
+				  </tr>
+				</thead>
+			<tbody>
+				  <tr>
+					<td>시험</td> <td>기말 고사</td> <td>11/30 18:00</td> 
+				  </tr>
+			</tbody>
+			</table>
+		</div>
 		<input type="button" value="알림" style="color:#ffffff; background-color:#69ffc3; border:0px; font-size:20px; border-radius: 2em; width:30%; margin-top:10px; margin-left:10px;">
-		<div style="background-color:#ffffff; width:400px; height:200px; margin-top:15px; margin-left:15px;"></div>
+		<div style="background-color:#ffffff; width:400px; height:200px; margin-top:15px; margin-left:15px;">
+			<table class="table">
+				<thead>
+				  <tr>
+					<th>이름</th> <th>시작 시간</th>
+					<th>호스트</th> <th>상태</th> 
+				  </tr>
+				</thead>
+			<tbody>
+				  <tr>
+					<td>팀 프로젝트</td> <td>2020-11-13 21:00</td> <td>최은만</td> <td>0/30 <u>진행 중</u></td> 
+				  </tr>
+			</tbody>
+			</table>
+		</div>
 	
 	</aside>
 	

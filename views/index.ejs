@@ -10,9 +10,30 @@
 <script type="text/javascript" src="index.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.e-calendar.js"></script>
-<style>
+<script>
+    function page_move(url, academic_no, name) {
+        var form = document.createElement("form");
+        var parm = new Array();
+        var input = new Array();
 
-</style>
+        form.action = url;
+        form.method = "post";
+
+        parm.push( ['academic', academic_no] );
+        parm.push( ['name', name] );
+
+
+        for (var i = 0; i < parm.length; i++) {
+            input[i] = document.createElement("input");
+            input[i].setAttribute("type", "hidden");
+            input[i].setAttribute('name', parm[i][0]);
+            input[i].setAttribute("value", parm[i][1]);
+            form.appendChild(input[i]);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 
 	<!-- 팝업 창 -->
 	<%- popupAlert %>
@@ -36,8 +57,12 @@
 		<br><br>
 		<div style="margin-left:130px; margin-bottom:85px;">
 			<div style="background-color:#afd5ef; color:#ffffff; font-size:20px; width:334px; padding-left:10px;">강의실 목록</div><br>
-			<div style="background-color:#ffffff; width:334px; height:144px; border:1px solid light-gray; padding-top:10px; padding-left:10px;"><br> 
-			강의1
+			<div style="background-color:#ffffff; width:334px; height:144px; border:1px solid light-gray; padding-top:0px; padding-left:10px;"><br> 
+			<% var i = 0; %>
+			<% classes.forEach(function(val){ %>
+    		<a href="#" style="color: black; text-decoration: none;" onclick="javascript:page_move('/classroom', '<%=academic[i]%>', '<%=val%>');"><%= val %></a><br>
+			<% i ++; %>
+			<% }) %>
 			</div>
 		</div>	
 	</nav>
@@ -56,9 +81,9 @@
 						        eventTitle: 'Events',
 						        url: '',
 						        events: [
-						            {title: 'Event 1', description: 'Description 1', datetime: new Date(2016, 7, 15, 17)},
-						            {title: 'Event 2', description: 'Description 2', datetime: new Date(2016, 7, 14, 16)},
-						            {title: 'Event 3', description: 'jQueryScript.Net', datetime: new Date(2016, 7, 10, 16)}
+							        <% events.forEach(function(event){ %>
+						            {title: '<%=event[0]%>', description: '<%=event[1]%>', datetime: new Date(<%=event[2]%>)},
+									<% }) %>
 						        ]});
 						});
 			    	</script>

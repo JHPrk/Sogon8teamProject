@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>STUDY WORK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/../css_homework.css" type="text/css" rel="stylesheet">
+<script>
+    function page_move(url, academic_no, name) {
+        var form = document.createElement("form");
+        var parm = new Array();
+        var input = new Array();
+
+        form.action = url;
+        form.method = "post";
+
+        parm.push( ['academic', academic_no] );
+        parm.push( ['name', name] );
+
+
+        for (var i = 0; i < parm.length; i++) {
+            input[i] = document.createElement("input");
+            input[i].setAttribute("type", "hidden");
+            input[i].setAttribute('name', parm[i][0]);
+            input[i].setAttribute("value", parm[i][1]);
+            form.appendChild(input[i]);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
+    function update_assignment(url) {
+        var form = document.createElement("form");
+        var parm = new Array();
+        var input = new Array();
+
+        form.action = url;
+        form.method = "post";
+        var s = document.getElementById("assignment");
+        var assignmentno = s.options[s.selectedIndex].value;
+
+
+        parm.push( ['academic', '<%=academic%>']);
+        parm.push( ['name', '<%=classname%>']);
+        parm.push( ['assignmentno', assignmentno]);
+
+
+        for (var i = 0; i < parm.length; i++) {
+            input[i] = document.createElement("input");
+            input[i].setAttribute("type", "hidden");
+            input[i].setAttribute('name', parm[i][0]);
+            input[i].setAttribute("value", parm[i][1]);
+            form.appendChild(input[i]);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</head>
+<body>
+	<!-- 상단 자리 -->
+	<header class="header" style="margin-top:15px;">
+		<div class="content" onclick="location.href='/'" style="background-color:#afd5ef; height:90px;">
+			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+			<div style="font-size:50px; line-height:185%;">
+				<b>STUDY WORK</b>
+				<b><%=title%></b>
+			</div>
+		</div>
+	</header>
+	
+	<!-- 왼쪽 자리 -->
+	<nav class="nav">
+		<!-- 로그인 정보 표시 -->
+		<%- loginBox %>
+		<!-- 메뉴 목록 -->
+		<%- menuList %>
+	</nav>
+	
+	
+	<!-- 버튼  -->
+	<section class="section">
+		<a href="#" onClick="javascript:page_move('/grade/attendance', '<%=academic%>', '<%=classname%>');" class="butt att">출석</a>
+		<a href="#" onClick="javascript:page_move('/grade/homework', '<%=academic%>', '<%=classname%>');" class="butt hw">과제</a>
+		<a href="#" onClick="javascript:page_move('/grade/test', '<%=academic%>', '<%=classname%>');" class="butt test">시험</a>
+		<%-gradeTable%>
+		
+	</section>
+	
+	
+	<!-- 하단 자리 -->
+	<footer class="footer">
+		<div class="copyright">
+			서울캠퍼스 04620 서울특별시 중구 필동로 1길 30 동국대학교<br>
+			바이오메디캠퍼스 10326 경기도 고양시 일산동구 동국로32 동국대학교 바이오메디캠퍼스<br>
+			TEL 02-2260-3114 FAX 02-2277-1274<br>
+			Copyright(c) 2016 DONGGUK UNIVERSITY. ALL RIGHTS RESERVED.
+		</div>
+	</footer>
+</body>
+</html>

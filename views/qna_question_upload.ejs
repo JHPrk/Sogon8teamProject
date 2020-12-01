@@ -1,46 +1,28 @@
 <!DOCTYPE html>
-<!-- saved from url=(0109)file:///C:/Users/Hwang/Desktop/%EC%A7%88%EB%AC%B8%EB%8B%B5%EB%B3%80/%EC%A7%88%EB%AC%B8%EB%AA%A9%EB%A1%9D.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>STUDY WORK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css_q_upload.css" type="text/css" rel="stylesheet">
+<link href="css_q_list.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<!-- 상단 자리 -->
 	<header class="header" style="margin-top:15px;">
 		<div style="background-color:#afd5ef; height:90px;">
-			<img src="/../studywork.png" style="height:100px; width:100px; float:left;">
+			<img src="studywork.png" style="height:100px; width:100px; float:left;">
 			<div style="font-size:50px; line-height:185%;">
 				<b>STUDY WORK</b>
+				<b><%=title%></b>
 			</div>
 		</div>
 	</header>
 	
 	<!-- 왼쪽 자리 -->
-	<nav class="nav">
-		<!-- 로그인 정보 표시 -->
-		<div style="margin-top:70px; margin-left:50px; ">
-			</div>
-	<form action="classroom.html" method="post">
-        <input type="submit" value="강의 목록" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
-    </form>
-			<br>
-			<form action="grade_attendance.html" method="post">
-        <input type="submit" value="성적 확인" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
-    </form>
-			<br>
-			<form action="assignment_detail.html" method="post">
-        <input type="submit" value="과제 확인" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
-    </form>
-			<br>
-			<form action="qna_quesiton_list.html" method="post">
-        <input type="submit" value="질의 응답" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
-    </form>
-			<br>
-			<form action="chatting_list.html" method="post">
-        <input type="submit" value="채팅 하기" style="color:#ffffff; background-color:#3498db; border:0px; font-size:30px; border-radius: 2em; width:80%;">	
-    </form>
+<nav class="nav">
+	<!-- 로그인 정보 표시 -->
+		<%- loginBox %>
+		<!-- 메뉴 목록 -->
+		<%- menuList %>
 	</nav>
 	
 	
